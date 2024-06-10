@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block title_block %} {{ title }} {% endblock %}
+
+{% block body_block %}
+<h2>Your Tasks List</h2>
+    <div class="row">
+        <div class="col-md-3">
+            
+        </div>
+        <div class="col-md-6">
+            <ol class="list-group">
+                {% for task in tasks %}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <a href="#">{{ task.title }}</a>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <button class="btn btn-primary">Edit</button>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <button class="btn btn-warning">Delete</button>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+<hr>
+<br>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+
+{% block title_block %} {{ title }} {% endblock %}
+
+{% block body_block %}
+<h2 class="text-center">Search by Title of Your Tasks</h2>
+    <div class="row">
+        <!-- templates/search_form.html -->
+        <form method="GET" action="">
+            <div class="row">
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="q" placeholder="Search tasks by title" required>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row my-5">
+        <ul class="list-group">
+            {% for task in results %}
+                <li class="list-group-item">
+                    <h3 class="display-3">{{ task.title }}</h3>
+                    <small>Created on : {{ task.create_date }}</small><br>
+                    <img class="img img-fluid" src="/media/{{ task.img }}" alt="">
+                    <p class="lead">{{ task.description }}</p>
+                    <p>Due date : {{ task.due_date }}</p>
+                    <p>Priority : {{ task.priority }}</p>
+                    <p>Completed : {{ task.completed }}</p>
+                </li>
+            {% empty %}
+                <li class="list-group-item">No tasks found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+<hr>
+{% endblock %}
